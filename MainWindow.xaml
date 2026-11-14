@@ -1,0 +1,146 @@
+<Window x:Class="PartiChart.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="PartiChart — disk usage dashboard" Width="1500" Height="920" MinWidth="1200" MinHeight="640"
+        WindowStartupLocation="CenterScreen" AllowDrop="True" Drop="OnDrop"
+        Background="{DynamicResource WinBg}" Foreground="{DynamicResource Txt}"
+        FontFamily="Segoe UI Variable Text, Segoe UI">
+    <Window.Resources>
+        <Style x:Key="Pill" TargetType="Button">
+            <Setter Property="Background" Value="{DynamicResource PillBg}"/>
+            <Setter Property="Foreground" Value="{DynamicResource PillFg}"/>
+            <Setter Property="Padding" Value="12,6"/>
+            <Setter Property="Margin" Value="0,0,6,6"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="b" Background="{TemplateBinding Background}" CornerRadius="12" Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True"><Setter TargetName="b" Property="Opacity" Value="0.8"/></Trigger>
+                            <Trigger Property="IsEnabled" Value="False"><Setter TargetName="b" Property="Opacity" Value="0.45"/></Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="Primary" TargetType="Button" BasedOn="{StaticResource Pill}">
+            <Setter Property="Background" Value="#6D4AFF"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+        <Style TargetType="ListBoxItem">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+                        <Border x:Name="bd" CornerRadius="8" Padding="6,4" Background="Transparent">
+                            <ContentPresenter/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True"><Setter TargetName="bd" Property="Background" Value="{DynamicResource ItemHover}"/></Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="330"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Sidebar -->
+        <Border Grid.Column="0" CornerRadius="22" Background="{DynamicResource SidebarBg}" Margin="0,0,18,0" Padding="18">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0" Margin="0,0,0,14">
+                    <Grid>
+                        <TextBlock Text="PartiChart" FontSize="26" FontWeight="Bold"/>
+                        <Button x:Name="ThemeBtn" Content="🌙 Dark" Style="{StaticResource Pill}" HorizontalAlignment="Right" VerticalAlignment="Center"
+                                Margin="0" Padding="10,4" FontSize="12" FontWeight="SemiBold" Click="Theme_Click" ToolTip="Switch light / dark theme"/>
+                    </Grid>
+                    <TextBlock Text="See where your disk space went" FontSize="12" Foreground="{DynamicResource Txt2}"/>
+                    <Button x:Name="FastBtn" Content="⚡ Fast mode: restart as admin" Style="{StaticResource Pill}" HorizontalAlignment="Left"
+                            Margin="0,10,0,0" Padding="10,5" FontSize="12" FontWeight="SemiBold" Click="Fast_Click"
+                            ToolTip="Reading the NTFS master file table needs administrator rights and scans a whole drive in seconds"/>
+                </StackPanel>
+                <Grid Grid.Row="1" Margin="0,0,0,8">
+                    <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                    <TextBox x:Name="PathBox" Padding="8,7" FontFamily="Cascadia Mono, Consolas" FontSize="12" Background="{DynamicResource InputBg}"
+                             Foreground="{DynamicResource Txt}" CaretBrush="{DynamicResource Txt}" BorderBrush="{DynamicResource InputBorder}" KeyDown="PathBox_KeyDown" ToolTip="Type or paste a path, press Enter"/>
+                    <Button Grid.Column="1" Content="Go" Style="{StaticResource Primary}" Margin="6,0,0,0" Click="Go_Click"/>
+                </Grid>
+                <WrapPanel Grid.Row="2">
+                    <Button Content="Browse…" Style="{StaticResource Pill}" Click="Browse_Click"/>
+                    <Button Content="Open in Explorer" Style="{StaticResource Pill}" Click="OpenExplorer_Click"/>
+                    <Button Content="Rescan" Style="{StaticResource Pill}" Click="Rescan_Click"/>
+                </WrapPanel>
+                <TextBlock Grid.Row="3" Text="QUICK ACCESS" FontSize="10" Foreground="{DynamicResource Txt2}" Margin="0,6,0,6"/>
+                <WrapPanel Grid.Row="3" x:Name="QuickPanel" Margin="0,24,0,0"/>
+                <StackPanel Grid.Row="4" Margin="0,4,0,0">
+                    <TextBlock Text="PARTITIONS — click to scan whole drive" FontSize="10" Foreground="{DynamicResource Txt2}" Margin="0,0,0,6"/>
+                    <StackPanel x:Name="DrivesPanel"/>
+                    <Button x:Name="AppsBtn" Content="🎮 Apps &amp; games storage" Style="{StaticResource Primary}" HorizontalAlignment="Stretch" Margin="0,2,0,0"
+                            Padding="12,9" FontWeight="SemiBold" Click="Apps_Click" ToolTip="Size of every installed app and game, and of its data"/>
+                </StackPanel>
+                <TextBlock Grid.Row="5" Text="CONTENTS — click a folder to open" FontSize="10" Foreground="{DynamicResource Txt2}" Margin="0,12,0,6"/>
+                <ListBox Grid.Row="6" x:Name="Contents" Background="Transparent" BorderThickness="0" Foreground="{DynamicResource Txt}"
+                         ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Stretch"
+                         SelectionChanged="Contents_SelectionChanged" MouseDoubleClick="Contents_DoubleClick">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="24"/><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="{Binding Icon}" FontSize="14" VerticalAlignment="Center"/>
+                                <StackPanel Grid.Column="1" Margin="0,0,8,0">
+                                    <TextBlock Text="{Binding Name}" FontSize="12" TextTrimming="CharacterEllipsis"/>
+                                    <ProgressBar Value="{Binding Pct}" Maximum="100" Height="3" Margin="0,3,0,0" Foreground="#FF8A00" Background="{DynamicResource TrackBg}" BorderThickness="0"/>
+                                </StackPanel>
+                                <TextBlock Grid.Column="2" Text="{Binding SizeText}" FontFamily="Cascadia Mono, Consolas" FontSize="11" VerticalAlignment="Center"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Grid>
+        </Border>
+
+        <!-- Main -->
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Border Grid.Row="0" CornerRadius="16" Background="{DynamicResource TopBarBg}" Padding="10,8" Margin="0,0,0,14">
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="UpBtn" Content="↑ Up" Style="{StaticResource Pill}" Margin="0,0,10,0" Click="Up_Click" IsEnabled="False"/>
+                    <StackPanel x:Name="Crumbs" Orientation="Horizontal" VerticalAlignment="Center"/>
+                </StackPanel>
+            </Border>
+            <Button x:Name="SensorBtn" Grid.Row="0" Content="📈 Sensors" Style="{StaticResource Pill}" HorizontalAlignment="Right" VerticalAlignment="Top"
+                    Margin="0,8,10,0" Padding="12,5" FontWeight="SemiBold" Click="SensorBtn_Click" ToolTip="Show / hide live temperature and power"/>
+            <Border x:Name="ScanBar" Grid.Row="1" CornerRadius="16" Background="{DynamicResource TopBarBg}" Padding="14,10" Margin="0,0,0,14" Visibility="Collapsed">
+                <Grid>
+                    <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                    <StackPanel>
+                        <TextBlock x:Name="ScanText" FontFamily="Cascadia Mono, Consolas" FontSize="12" TextTrimming="CharacterEllipsis"/>
+                        <ProgressBar IsIndeterminate="True" Height="4" Margin="0,8,0,0" Foreground="#6D4AFF" Background="{DynamicResource TrackBg}" BorderThickness="0"/>
+                    </StackPanel>
+                    <Button Grid.Column="1" Content="Cancel" Style="{StaticResource Pill}" Margin="12,0,0,0" Click="Cancel_Click"/>
+                </Grid>
+            </Border>
+            <ScrollViewer Grid.Row="2" x:Name="Scroll" VerticalScrollBarVisibility="Auto" SizeChanged="Scroll_SizeChanged" ScrollChanged="Scroll_ScrollChanged">
+                <WrapPanel x:Name="CardsPanel"/>
+            </ScrollViewer>
+        </Grid>
+        <Border x:Name="SensorHost" Grid.Column="2" Width="350" Margin="18,0,0,0"/>
+    </Grid>
+</Window>

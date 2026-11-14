@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- WiX Toolset 5. Build with installer\build-installer.ps1 -->
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
+  <Package Name="PartiChart"
+           Manufacturer="mightyy-duck"
+           Version="1.0.0.0"
+           UpgradeCode="0D008DDA-385B-4107-9876-BE6321A4AC89"
+           Scope="perMachine"
+           InstallerVersion="500"
+           Compressed="yes">
+
+    <SummaryInformation Description="PartiChart - disk usage dashboard" Manufacturer="mightyy-duck" />
+
+    <!-- installing a newer version upgrades in place; the UpgradeCode above must never change -->
+    <MajorUpgrade DowngradeErrorMessage="A newer version of PartiChart is already installed." />
+    <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
+
+    <Property Id="ARPURLINFOABOUT" Value="https://github.com/mightyy-duck/partichart" />
+    <Property Id="ARPHELPLINK" Value="https://github.com/mightyy-duck/partichart/issues" />
+
+    <!-- standard wizard: welcome, license, install folder, progress -->
+    <WixVariable Id="WixUILicenseRtf" Value="license.rtf" />
+    <ui:WixUI Id="WixUI_InstallDir" InstallDirectory="INSTALLFOLDER" />
+
+    <StandardDirectory Id="ProgramFiles64Folder">
+      <Directory Id="INSTALLFOLDER" Name="PartiChart" />
+    </StandardDirectory>
+
+    <Feature Id="Main" Title="PartiChart" Level="1">
+      <Component Directory="INSTALLFOLDER" Guid="*">
+        <File Id="PartiChartExe" Source="$(var.SourceDir)\PartiChart.exe" KeyPath="yes">
+          <Shortcut Id="StartMenuShortcut" Directory="ProgramMenuFolder" Name="PartiChart" WorkingDirectory="INSTALLFOLDER" Advertise="yes" />
+          <Shortcut Id="DesktopShortcut" Directory="DesktopFolder" Name="PartiChart" WorkingDirectory="INSTALLFOLDER" Advertise="yes" />
+        </File>
+      </Component>
+    </Feature>
+  </Package>
+</Wix>

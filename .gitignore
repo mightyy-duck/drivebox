@@ -1,0 +1,11 @@
+bin/
+obj/
+dist*/
+artifacts/
+publish/
+.vs/
+*.user
+*.suo
+*.msi
+*.wixpdb
+*.zip
