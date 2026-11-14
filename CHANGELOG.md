@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.1
+
+* New app icon: exe, window, taskbar, Start menu and desktop shortcuts, and the entry in Settings > Apps.
+
 ## 1.0.0
 
 First public release.

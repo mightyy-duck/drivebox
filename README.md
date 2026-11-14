@@ -1,4 +1,6 @@
-# PartiChart
+<p align="center"><img src="Assets/icon-256.png" alt="PartiChart icon" width="128"></p>
+
+<h1 align="center">PartiChart</h1>
 
 **See where your disk space went.** PartiChart is a Windows desktop app that scans a drive or folder once and turns it into a live dashboard: a map of every folder, 2D and 3D charts, the real cost of your apps and games, and live CPU / GPU temperature and power.
 
@@ -12,8 +14,8 @@ Get the latest version from the **[Releases page](https://github.com/mightyy-duc
 
 | File | What it is |
 |---|---|
-| `PartiChart-1.0.0-x64.msi` | Installer. Adds a Start menu and desktop shortcut and can be removed from *Settings → Apps*. |
-| `PartiChart-1.0.0-win-x64-portable.zip` | Single `PartiChart.exe`. Unzip anywhere and run, nothing is installed. |
+| `PartiChart-1.0.1-x64.msi` | Installer. Adds a Start menu and desktop shortcut and can be removed from *Settings → Apps*. |
+| `PartiChart-1.0.1-win-x64-portable.zip` | Single `PartiChart.exe`. Unzip anywhere and run, nothing is installed. |
 
 **Requirements:** Windows 10 or 11, 64-bit. The .NET runtime is bundled, so there is nothing else to install.
 

@@ -37,10 +37,10 @@ The installer is per-machine (`C:\Program Files\PartiChart`), adds Start menu an
 1. Bump `<Version>` / `<AssemblyVersion>` / `<FileVersion>` / `<InformationalVersion>` in `PartiChart.csproj` and the `Version` in `installer\Package.wxs`.
 2. Update `CHANGELOG.md`.
 3. `.\installer\build-installer.ps1`
-4. Commit, tag (`git tag v1.0.0`), push, then create the GitHub release and attach the files from `artifacts\`.
+4. Commit, tag (`git tag v1.0.1`), push, then create the GitHub release and attach the files from `artifacts\`.
 ```powershell
-gh release create v1.0.0 artifacts\PartiChart-1.0.0-x64.msi artifacts\PartiChart-1.0.0-win-x64-portable.zip artifacts\SHA256SUMS.txt `
-  --title "PartiChart 1.0.0" --notes-file CHANGELOG.md
+gh release create v1.0.1 artifacts\PartiChart-1.0.1-x64.msi artifacts\PartiChart-1.0.1-win-x64-portable.zip artifacts\SHA256SUMS.txt `
+  --title "PartiChart 1.0.1" --notes-file CHANGELOG.md
 ```
 
 ## Command-line options

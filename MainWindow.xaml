@@ -1,7 +1,7 @@
 <Window x:Class="PartiChart.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="PartiChart — disk usage dashboard" Width="1500" Height="920" MinWidth="1200" MinHeight="640"
+        Title="PartiChart — disk usage dashboard" Icon="Assets/app.ico" Width="1500" Height="920" MinWidth="1200" MinHeight="640"
         WindowStartupLocation="CenterScreen" AllowDrop="True" Drop="OnDrop"
         Background="{DynamicResource WinBg}" Foreground="{DynamicResource Txt}"
         FontFamily="Segoe UI Variable Text, Segoe UI">

@@ -29,7 +29,7 @@ if (-not $SkipPublish) {
 }
 
 $msi = Join-Path $art "PartiChart-$version-x64.msi"
-wix build -arch x64 -ext WixToolset.UI.wixext -b $PSScriptRoot -d "SourceDir=$art" -o $msi (Join-Path $PSScriptRoot 'Package.wxs')
+wix build -arch x64 -ext WixToolset.UI.wixext -b $PSScriptRoot -d "SourceDir=$art" -d "IconFile=$(Join-Path $root 'Assets\app.ico')" -o $msi (Join-Path $PSScriptRoot 'Package.wxs')
 if ($LASTEXITCODE -ne 0) { throw 'wix build failed' }
 Get-ChildItem $art -Filter *.wixpdb | Remove-Item -Force
 

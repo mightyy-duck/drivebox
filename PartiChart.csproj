@@ -5,12 +5,13 @@
     <UseWPF>true</UseWPF>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationIcon>Assets\app.ico</ApplicationIcon>
     <AssemblyName>PartiChart</AssemblyName>
     <RootNamespace>PartiChart</RootNamespace>
-    <Version>1.0.0</Version>
-    <AssemblyVersion>1.0.0.0</AssemblyVersion>
-    <FileVersion>1.0.0.0</FileVersion>
-    <InformationalVersion>1.0.0</InformationalVersion>
+    <Version>1.0.1</Version>
+    <AssemblyVersion>1.0.1.0</AssemblyVersion>
+    <FileVersion>1.0.1.0</FileVersion>
+    <InformationalVersion>1.0.1</InformationalVersion>
     <Product>PartiChart</Product>
     <Authors>mightyy-duck</Authors>
     <Company>mightyy-duck</Company>
@@ -22,6 +23,7 @@
     <TieredPGO>false</TieredPGO>
   </PropertyGroup>
   <ItemGroup>
+    <Resource Include="Assets\app.ico" />
     <PackageReference Include="LibreHardwareMonitorLib" Version="0.9.6" />
   </ItemGroup>
 </Project>
