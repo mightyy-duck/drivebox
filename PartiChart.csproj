@@ -12,12 +12,12 @@
     <AssemblyVersion>1.0.1.0</AssemblyVersion>
     <FileVersion>1.0.1.0</FileVersion>
     <InformationalVersion>1.0.1</InformationalVersion>
-    <Product>PartiChart</Product>
+    <Product>DriveBox</Product>
     <Authors>mightyy-duck</Authors>
     <Company>mightyy-duck</Company>
     <Copyright>Copyright (c) 2026 mightyy-duck</Copyright>
     <Description>Disk usage dashboard for Windows: partition and folder maps, 2D and 3D charts, apps and games storage, live CPU and GPU temperature and power.</Description>
-    <RepositoryUrl>https://github.com/mightyy-duck/partichart</RepositoryUrl>
+    <RepositoryUrl>https://github.com/mightyy-duck/drivebox</RepositoryUrl>
     <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
     <ConcurrentGarbageCollection>false</ConcurrentGarbageCollection>
     <TieredPGO>false</TieredPGO>

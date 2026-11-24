@@ -164,7 +164,7 @@ public partial class MainWindow : Window
         CardsPanel.Children.Clear();
         var sp = new StackPanel { Margin = new Thickness(40) };
         sp.Children.Add(new TextBlock { Text = "Pick a partition or folder", FontSize = 28, FontWeight = FontWeights.Bold, Foreground = G.Ink });
-        sp.Children.Add(new TextBlock { Text = "Click a drive on the left (for example C:\\) and PartiChart scans the whole partition once. You then see every folder's usage at the same time in the Disk map, and you can click any tile to drill in.\n\nYou can also paste a path, use Browse, or drag a folder onto this window.",
+        sp.Children.Add(new TextBlock { Text = "Click a drive on the left (for example C:\\) and DriveBox scans the whole partition once. You then see every folder's usage at the same time in the Disk map, and you can click any tile to drill in.\n\nYou can also paste a path, use Browse, or drag a folder onto this window.",
             FontSize = 14, Foreground = G.Gray, TextWrapping = TextWrapping.Wrap, Margin = new Thickness(0, 10, 0, 0), MaxWidth = 640 });
         CardsPanel.Children.Add(new Border { Background = G.Surface, CornerRadius = new CornerRadius(22), Child = sp, Tag = "wide", Margin = new Thickness(0, 0, 18, 18) });
         Layout();
@@ -234,7 +234,7 @@ public partial class MainWindow : Window
     {
         path = path.Trim().Trim('"');
         if (path.Length == 2 && path[1] == ':') path += "\\";
-        if (!Directory.Exists(path)) { MessageBox.Show(this, "Folder not found:\n" + path, "PartiChart"); return; }
+        if (!Directory.Exists(path)) { MessageBox.Show(this, "Folder not found:\n" + path, "DriveBox"); return; }
         path = System.IO.Path.GetFullPath(path);
         if (root != null)
         {

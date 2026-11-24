@@ -1,21 +1,23 @@
-<p align="center"><img src="Assets/icon-256.png" alt="PartiChart icon" width="128"></p>
+<p align="center"><img src="Assets/icon-256.png" alt="DriveBox icon" width="128"></p>
 
-<h1 align="center">PartiChart</h1>
+<h1 align="center">DriveBox</h1>
 
-**See where your disk space went.** PartiChart is a Windows desktop app that scans a drive or folder once and turns it into a live dashboard: a map of every folder, 2D and 3D charts, the real cost of your apps and games, and live CPU / GPU temperature and power.
+**See where your disk space went.** DriveBox is a Windows desktop app that scans a drive or folder once and turns it into a live dashboard: a map of every folder, 2D and 3D charts, the real cost of your apps and games, and live CPU / GPU temperature and power.
 
 Everything runs locally on your PC. Nothing is uploaded and there is no telemetry.
 
-![PartiChart overview](docs/images/overview-light.png)
+![DriveBox overview](docs/images/overview-light.png)
 
 ## Download
 
-Get the latest version from the **[Releases page](https://github.com/mightyy-duck/partichart/releases/latest)**:
+Get the latest version from the **[Releases page](https://github.com/mightyy-duck/drivebox/releases/latest)**:
 
 | File | What it is |
 |---|---|
 | `PartiChart-1.0.1-x64.msi` | Installer. Adds a Start menu and desktop shortcut and can be removed from *Settings → Apps*. |
 | `PartiChart-1.0.1-win-x64-portable.zip` | Single `PartiChart.exe`. Unzip anywhere and run, nothing is installed. |
+
+*DriveBox was called PartiChart until 1.0.1, so the files of that release still carry the old name. Newer releases use DriveBox.*
 
 **Requirements:** Windows 10 or 11, 64-bit. The .NET runtime is bundled, so there is nothing else to install.
 
@@ -24,7 +26,7 @@ Get the latest version from the **[Releases page](https://github.com/mightyy-duc
 ## What it does
 
 ### Disk map: every folder at once
-Click a partition such as `C:\` and PartiChart scans the whole drive in one pass. The **Disk map** shows every top-level folder as a tile sized by how much of the partition it uses, with a used / free bar on top. Click a tile to open that folder, which gets its own map. No more opening folders one by one.
+Click a partition such as `C:\` and DriveBox scans the whole drive in one pass. The **Disk map** shows every top-level folder as a tile sized by how much of the partition it uses, with a used / free bar on top. Click a tile to open that folder, which gets its own map. No more opening folders one by one.
 
 * Fast parallel scanner (low-level directory enumeration on all cores), with live progress: each top-level folder appears as it is found, grows while it is scanned and gets a ✓ when done.
 * **Fast mode** (optional, needs administrator): reads the NTFS master file table directly, the same technique used by the fastest disk-space tools, to scan a whole drive in seconds. If anything goes wrong it falls back to the normal scanner.
@@ -71,7 +73,7 @@ The right-hand panel shows **temperature and power** and updates every second. P
 
 * **GPU** temperature and power work without administrator rights.
 * **CPU** temperature and power are only exposed to administrators; the panel offers a one-click restart in elevated mode.
-* History is kept for 24 hours (per-minute points are saved to `%AppData%\PartiChart\sensors.csv`).
+* History is kept for 24 hours (per-minute points are saved to `%AppData%\DriveBox\sensors.csv`).
 * Power is CPU + GPU only, not the whole PC.
 
 ### Themes
@@ -83,7 +85,7 @@ A light and a dark theme, switchable from the sidebar and remembered between run
 
 ## Quick start
 
-1. Start PartiChart.
+1. Start DriveBox.
 2. Click a drive in **Partitions** (or *Browse…*, or drop a folder onto the window).
 3. Wait for the scan, then click tiles and bars to dive into folders. Use **↑ Up** or the breadcrumb to go back.
 4. Try **🎮 Apps & games storage**, the theme button, and the **📈 Sensors** button in the top bar.
@@ -91,13 +93,13 @@ A light and a dark theme, switchable from the sidebar and remembered between run
 Command line:
 
 ```text
-PartiChart.exe [folder] [--dark | --light] [--apps]
+DriveBox.exe [folder] [--dark | --light] [--apps]
 ```
 
 ## Privacy and what is written to disk
 
 * Scanning, apps and sensors are all read locally. No network access, no telemetry.
-* The app stores only `%AppData%\PartiChart\theme.txt` (your theme) and `%AppData%\PartiChart\sensors.csv` (24 h of sensor history).
+* The app stores only `%AppData%\DriveBox\theme.txt` (your theme) and `%AppData%\DriveBox\sensors.csv` (24 h of sensor history).
 
 ## Known limitations
 
