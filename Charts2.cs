@@ -5,7 +5,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using Shapes = System.Windows.Shapes;
 
-namespace PartiChart;
+namespace DriveBox;
 
 /// <summary>Second batch of cards: flow charts, age columns, stacked years, donut, rounded-square bubbles and the dark 3D cards.</summary>
 public sealed partial class Dashboard

@@ -3,7 +3,7 @@ using System.Security.Principal;
 using System.Text;
 using Microsoft.Win32.SafeHandles;
 
-namespace PartiChart;
+namespace DriveBox;
 
 /// <summary>
 /// Reads the NTFS Master File Table straight from the volume (needs administrator).

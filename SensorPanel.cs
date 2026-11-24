@@ -4,7 +4,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using Shapes = System.Windows.Shapes;
 
-namespace PartiChart;
+namespace DriveBox;
 
 /// <summary>Right-hand panel: live temperature and power with a selectable window (1 / 5 / 30 min, 1 / 12 / 24 h).</summary>
 public sealed class SensorPanel : Border

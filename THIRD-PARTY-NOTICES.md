@@ -1,6 +1,6 @@
 # Third-party notices
 
-PartiChart uses the following open-source component.
+DriveBox uses the following open-source component.
 
 ## LibreHardwareMonitorLib
 * Project: https://github.com/LibreHardwareMonitor/LibreHardwareMonitor

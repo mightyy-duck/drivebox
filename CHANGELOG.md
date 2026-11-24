@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.2
+
+* The app is now called **DriveBox** everywhere: exe (`DriveBox.exe`), installer, Start menu, settings folder (`%AppData%\DriveBox`; settings from the old PartiChart folder are moved over on first start).
+* Release files are built by GitHub Actions. The portable zip needs no installer and no administrator rights.
+
 ## 1.0.1
 
 * New app icon: exe, window, taskbar, Start menu and desktop shortcuts, and the entry in Settings > Apps.

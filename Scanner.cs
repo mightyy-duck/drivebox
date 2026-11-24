@@ -1,6 +1,6 @@
 using System.Collections.Concurrent;
 
-namespace PartiChart;
+namespace DriveBox;
 
 public readonly record struct FileEntry(string Name, long Size, long Ticks);
 

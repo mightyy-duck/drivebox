@@ -1,4 +1,4 @@
-# PartiChart user guide
+# DriveBox user guide
 
 ## The window
 
@@ -16,7 +16,7 @@
 
 ### Sidebar
 * **Light / Dark**: switches the theme (remembered).
-* **⚡ Fast mode**: restarts PartiChart as administrator so drives can be scanned by reading the NTFS master file table. Once active the button reads "Fast mode ON".
+* **⚡ Fast mode**: restarts DriveBox as administrator so drives can be scanned by reading the NTFS master file table. Once active the button reads "Fast mode ON".
 * **Path box + Go**: type or paste a folder and press Enter.
 * **Browse…, Open in Explorer, Rescan**: pick a folder, show the current one in Explorer, scan it again.
 * **Quick access**: Home, Desktop, Documents, Downloads, AppData.
@@ -35,7 +35,7 @@ When you pick a drive or folder, a live panel lists each top-level folder as it 
 After the scan, everything is in memory, so moving between folders is instant. *Rescan* reads the disk again.
 
 ### Fast mode
-Fast mode reads the NTFS master file table straight from the volume, which is far quicker than walking folders. It needs administrator rights and only applies when you scan the **root of an NTFS drive** (for example `C:\`). If it cannot be used for any reason, PartiChart silently uses the normal scanner.
+Fast mode reads the NTFS master file table straight from the volume, which is far quicker than walking folders. It needs administrator rights and only applies when you scan the **root of an NTFS drive** (for example `C:\`). If it cannot be used for any reason, DriveBox silently uses the normal scanner.
 
 ## Reading the charts
 All numbers refer to the **folder you are looking at**, including everything inside it.
@@ -51,7 +51,7 @@ All numbers refer to the **folder you are looking at**, including everything ins
 Hover any 2D card to lift it and replay its animation.
 
 ## Apps & games
-Click **🎮 Apps & games storage**. PartiChart builds the list from:
+Click **🎮 Apps & games storage**. DriveBox builds the list from:
 
 1. **Steam** libraries (`appmanifest_*.acf`),
 2. **Epic Games** manifests,
@@ -70,13 +70,13 @@ For each entry it measures the **install folder** and then matches **data folder
 * Power card: CPU, GPU and total in watts, average, peak and the **energy** used in the window.
 * Hover a chart to read the value at that time.
 * GPU readings work immediately. For **CPU** temperature and power use *Enable CPU sensors (restart as admin)*.
-* The 12 h and 24 h views fill up as PartiChart keeps running; history is saved every minute, so it survives restarts.
+* The 12 h and 24 h views fill up as DriveBox keeps running; history is saved every minute, so it survives restarts.
 
-## Files PartiChart writes
+## Files DriveBox writes
 | Path | Content |
 |---|---|
-| `%AppData%\PartiChart\theme.txt` | `light` or `dark` |
-| `%AppData%\PartiChart\sensors.csv` | one line per minute for the last 24 h |
+| `%AppData%\DriveBox\theme.txt` | `light` or `dark` |
+| `%AppData%\DriveBox\sensors.csv` | one line per minute for the last 24 h |
 
 Delete the folder to reset everything. Uninstalling the MSI removes the program; these two files are left behind.
 
@@ -84,7 +84,7 @@ Delete the folder to reset everything. Uninstalling the MSI removes the program;
 | Problem | What to do |
 |---|---|
 | SmartScreen warning | The app is not signed yet. *More info → Run anyway*. |
-| Scan of `C:\` misses some folders | Some folders are protected. Run PartiChart as administrator (⚡ Fast mode). |
+| Scan of `C:\` misses some folders | Some folders are protected. Run DriveBox as administrator (⚡ Fast mode). |
 | CPU temperature shows "—" | Needs administrator rights; use *Enable CPU sensors*. |
 | Apps & games lists little data for a game | Data is matched by folder name. Some games keep saves under a different name. |
 | Window looks blurry on a high-DPI screen | Right-click the exe → Properties → Compatibility → change high DPI settings → *Application*. |

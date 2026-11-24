@@ -1,4 +1,4 @@
-namespace PartiChart;
+namespace DriveBox;
 
 public sealed class ExtInfo { public long Size, Count; public int Cat; }
 

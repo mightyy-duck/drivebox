@@ -1,7 +1,7 @@
 <#
   Builds the release files into .\artifacts :
-    PartiChart-<version>-x64.msi
-    PartiChart-<version>-win-x64-portable.zip
+    DriveBox-<version>-x64.msi
+    DriveBox-<version>-win-x64-portable.zip
     SHA256SUMS.txt
   Requires: .NET 10 SDK and WiX 5  (dotnet tool install --global wix --version 5.0.2
                                      wix extension add -g WixToolset.UI.wixext/5.0.2)
@@ -13,9 +13,9 @@ $root = Split-Path -Parent $PSScriptRoot
 Set-Location $root
 $env:PATH += ";$env:USERPROFILE\.dotnet\tools"
 
-$csproj = Get-Content (Join-Path $root 'PartiChart.csproj') -Raw
+$csproj = Get-Content (Join-Path $root 'DriveBox.csproj') -Raw
 $version = [regex]::Match($csproj, '<Version>([^<]+)</Version>').Groups[1].Value
-if (-not $version) { throw 'Could not read <Version> from PartiChart.csproj' }
+if (-not $version) { throw 'Could not read <Version> from DriveBox.csproj' }
 $wxs = Get-Content (Join-Path $PSScriptRoot 'Package.wxs') -Raw
 if ($wxs -notmatch "Version=`"$([regex]::Escape($version)).0`"") { throw "installer\Package.wxs Version must be $version.0" }
 
@@ -28,14 +28,14 @@ if (-not $SkipPublish) {
     Get-ChildItem $art -Filter *.pdb | Remove-Item -Force
 }
 
-$msi = Join-Path $art "PartiChart-$version-x64.msi"
+$msi = Join-Path $art "DriveBox-$version-x64.msi"
 wix build -arch x64 -ext WixToolset.UI.wixext -b $PSScriptRoot -d "SourceDir=$art" -d "IconFile=$(Join-Path $root 'Assets\app.ico')" -o $msi (Join-Path $PSScriptRoot 'Package.wxs')
 if ($LASTEXITCODE -ne 0) { throw 'wix build failed' }
 Get-ChildItem $art -Filter *.wixpdb | Remove-Item -Force
 
-$zip = Join-Path $art "PartiChart-$version-win-x64-portable.zip"
+$zip = Join-Path $art "DriveBox-$version-win-x64-portable.zip"
 if (Test-Path $zip) { Remove-Item $zip -Force }
-Compress-Archive -Path (Join-Path $art 'PartiChart.exe'), (Join-Path $root 'LICENSE'), (Join-Path $root 'THIRD-PARTY-NOTICES.md') -DestinationPath $zip
+Compress-Archive -Path (Join-Path $art 'DriveBox.exe'), (Join-Path $root 'LICENSE'), (Join-Path $root 'THIRD-PARTY-NOTICES.md') -DestinationPath $zip
 
 $sums = Join-Path $art 'SHA256SUMS.txt'
 Get-ChildItem $art -Include *.msi, *.zip -Recurse | ForEach-Object { '{0}  {1}' -f (Get-FileHash $_.FullName -Algorithm SHA256).Hash.ToLower(), $_.Name } | Set-Content $sums -Encoding ascii

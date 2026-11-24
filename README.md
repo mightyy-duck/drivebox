@@ -14,10 +14,10 @@ Get the latest version from the **[Releases page](https://github.com/mightyy-duc
 
 | File | What it is |
 |---|---|
-| `PartiChart-1.0.1-x64.msi` | Installer. Adds a Start menu and desktop shortcut and can be removed from *Settings → Apps*. |
-| `PartiChart-1.0.1-win-x64-portable.zip` | Single `PartiChart.exe`. Unzip anywhere and run, nothing is installed. |
+| `DriveBox-1.0.2-win-x64-portable.zip` | Single `DriveBox.exe`. Unzip anywhere and run: nothing is installed, no administrator rights needed. |
+| `DriveBox-1.0.2-x64.msi` | Installer. Adds a Start menu and desktop shortcut and can be removed from *Settings → Apps*. |
 
-*DriveBox was called PartiChart until 1.0.1, so the files of that release still carry the old name. Newer releases use DriveBox.*
+Or install and update it with [Box Launcher](https://github.com/mightyy-duck/boxlauncher), which uses the portable zip.
 
 **Requirements:** Windows 10 or 11, 64-bit. The .NET runtime is bundled, so there is nothing else to install.
 

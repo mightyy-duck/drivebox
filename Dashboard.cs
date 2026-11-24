@@ -4,7 +4,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using Shapes = System.Windows.Shapes;
 
-namespace PartiChart;
+namespace DriveBox;
 
 public sealed class ChartCanvas : Canvas
 {

@@ -2,7 +2,7 @@ using System.Text.Json;
 using System.Text.RegularExpressions;
 using Microsoft.Win32;
 
-namespace PartiChart;
+namespace DriveBox;
 
 public sealed class AppEntry
 {

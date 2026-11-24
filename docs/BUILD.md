@@ -1,4 +1,4 @@
-# Building PartiChart
+# Building DriveBox
 
 ## Prerequisites
 * Windows 10/11 x64
@@ -23,24 +23,24 @@ dotnet publish -c Release -r win-x64 --self-contained true `
   -p:PublishSingleFile=true -p:EnableCompressionInSingleFile=true `
   -p:IncludeNativeLibrariesForSelfExtract=true -o artifacts
 ```
-The result is `artifacts\PartiChart.exe` (about 60 MB, includes the .NET runtime).
+The result is `artifacts\DriveBox.exe` (about 60 MB, includes the .NET runtime).
 
 ## Build the MSI
 ```powershell
 .\installer\build-installer.ps1
 ```
-This publishes the exe (unless `-SkipPublish` is given), builds `artifacts\PartiChart-<version>-x64.msi` and a portable zip, and writes `SHA256SUMS.txt`. The version comes from `<Version>` in `PartiChart.csproj`.
+This publishes the exe (unless `-SkipPublish` is given), builds `artifacts\DriveBox-<version>-x64.msi` and a portable zip, and writes `SHA256SUMS.txt`. The version comes from `<Version>` in `DriveBox.csproj`.
 
-The installer is per-machine (`C:\Program Files\PartiChart`), adds Start menu and desktop shortcuts, uses the standard "install directory" wizard with the MIT license page, and upgrades older versions in place (fixed UpgradeCode in `installer\Package.wxs`, do not change it).
+The installer is per-machine (`C:\Program Files\DriveBox`), adds Start menu and desktop shortcuts, uses the standard "install directory" wizard with the MIT license page, and upgrades older versions in place (fixed UpgradeCode in `installer\Package.wxs`, do not change it).
 
 ## Release checklist
-1. Bump `<Version>` / `<AssemblyVersion>` / `<FileVersion>` / `<InformationalVersion>` in `PartiChart.csproj` and the `Version` in `installer\Package.wxs`.
+1. Bump `<Version>` / `<AssemblyVersion>` / `<FileVersion>` / `<InformationalVersion>` in `DriveBox.csproj` and the `Version` in `installer\Package.wxs`.
 2. Update `CHANGELOG.md`.
 3. `.\installer\build-installer.ps1`
 4. Commit, tag (`git tag v1.0.1`), push, then create the GitHub release and attach the files from `artifacts\`.
 ```powershell
-gh release create v1.0.1 artifacts\PartiChart-1.0.1-x64.msi artifacts\PartiChart-1.0.1-win-x64-portable.zip artifacts\SHA256SUMS.txt `
-  --title "PartiChart 1.0.1" --notes-file CHANGELOG.md
+gh release create v1.0.1 artifacts\DriveBox-1.0.1-x64.msi artifacts\DriveBox-1.0.1-win-x64-portable.zip artifacts\SHA256SUMS.txt `
+  --title "DriveBox 1.0.1" --notes-file CHANGELOG.md
 ```
 
 ## Command-line options

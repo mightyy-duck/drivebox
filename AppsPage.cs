@@ -4,7 +4,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 
-namespace PartiChart;
+namespace DriveBox;
 
 /// <summary>The "Apps &amp; games" page: every installed program with the size of itself and the size of its data.</summary>
 public sealed class AppsPage

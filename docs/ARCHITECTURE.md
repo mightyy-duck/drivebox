@@ -1,6 +1,6 @@
-# How PartiChart works
+# How DriveBox works
 
-PartiChart is a WPF application (C#, .NET 10). The UI is built mostly in code; there is no charting library. Charts are drawn with WPF shapes, or with `DrawingContext` for the 3D view, and animated with WPF animations that run on the GPU compositor.
+DriveBox is a WPF application (C#, .NET 10). The UI is built mostly in code; there is no charting library. Charts are drawn with WPF shapes, or with `DrawingContext` for the 3D view, and animated with WPF animations that run on the GPU compositor.
 
 ## Source map
 

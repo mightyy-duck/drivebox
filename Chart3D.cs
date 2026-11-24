@@ -4,7 +4,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 
-namespace PartiChart;
+namespace DriveBox;
 
 /// <summary>
 /// Small retained-mode 3D renderer (perspective + rotation) drawn with WPF's GPU-composited DrawingContext.

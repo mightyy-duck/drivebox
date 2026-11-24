@@ -1,7 +1,7 @@
 using System.Globalization;
 using LibreHardwareMonitor.Hardware;
 
-namespace PartiChart;
+namespace DriveBox;
 
 public struct Sample
 {
@@ -37,7 +37,7 @@ public sealed class SensorService
     Computer? pc; System.Threading.Timer? timer; int busy;
     // current-minute accumulator
     long accKey = -1; double aCT, aCP, aGT, aGP, aL; int nCT, nCP, nGT, nGP, nL;
-    static string FilePath => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "PartiChart", "sensors.csv");
+    static string FilePath => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "DriveBox", "sensors.csv");
 
     public event Action? Updated;
     public Sample Last = Sample.Blank(0);

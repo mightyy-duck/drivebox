@@ -1,13 +1,13 @@
 using System.Windows;
 using System.Windows.Media;
 
-namespace PartiChart;
+namespace DriveBox;
 
 /// <summary>Light / dark theme: drives the window resources (XAML uses DynamicResource) and G.* brushes.</summary>
 public static class Theme
 {
     public static bool Dark;
-    static string SettingsFile => System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "PartiChart", "theme.txt");
+    static string SettingsFile => System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "DriveBox", "theme.txt");
 
     public static void Load()
     {
